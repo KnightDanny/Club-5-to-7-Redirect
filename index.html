@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* --- Base Styles --- */
         body {
@@ -72,7 +73,17 @@
             font-weight: 500;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            /* Flexbox for icon and text alignment */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        .link-button i {
+            margin-right: 10px; /* Space between icon and text */
+            font-size: 1.3em; /* Slightly larger icons */
+        }
+
 
         .link-button:hover {
             transform: translateY(-3px);
@@ -89,59 +100,36 @@
 </head>
 <body>
     <div class="container">
-        <!-- =================================== -->
-        <!-- START CUSTOMIZING HERE -->
-        <!-- =================================== -->
+        <!-- =================================== --><!-- START CUSTOMIZING HERE --><!-- =================================== --><!-- 1. Profile Picture --><img src="Logo.jpg" alt="Profile Picture" class="profile-pic">
 
-        <!-- 1. Profile Picture -->
-        <img src="Logo.jpg" alt="Profile Picture" class="profile-pic">
+        <!-- 2. Profile Name --><h1 class="profile-name">@Club5to7</h1>
 
-        <!-- 2. Profile Name -->
-        <h1 class="profile-name">@Club5to7</h1>
+        <!-- 3. Profile Description --><p class="profile-description">Welcome!</p>
 
-        <!-- 3. Profile Description -->
-        <p class="profile-description">Welcome!</p>
-
-        <!-- 4. Links -->
-        <div class="links-container">
-            <!-- Your Google Form Link -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrzCI-fNJtb2FbzU8jayJDXbP8aAMZtquf7hYBBm7Jx4ZWCg/viewform?usp=sharing&ouid=109399949878506138810" class="link-button">
-                📝 RSVP to the Costume Party
+        <!-- 4. Links --><div class="links-container">
+            <!-- Your Google Form Link with Ghost Icon --><a href="https://docs.google.com/forms/d/e/1FAIpQLSfrzCI-fNJtb2FbzU8jayJDXbP8aAMZtquf7hYBBm7Jx4ZWCg/viewform?usp=sharing&ouid=109399949878506138810" class="link-button">
+                🎃 RSVP to Costume Party
             </a>
 
-            <!-- Telegram Group -->
-            <a href="https://t.me/club5to7" class="link-button">
-                🌐 Join our Telegram Group
+            <!-- Telegram Group with Telegram Icon --><a href="https.t.me/club5to7" class="link-button">
+                <i class="fab fa-telegram-plane"></i> Join our Telegram Group
             </a>
 
-            <!-- Add more links here by copying the line above -->
-        </div>
+            <!-- Add more links here by copying the line above --></div>
 
-        <!-- 5. Footer (Optional) -->
-        <footer>
+        <!-- 5. Footer (Optional) --><footer>
             <p>&copy; 2025 Club 5 to 7. All rights reserved.</p>
         </footer>
 
-        <!-- =================================== -->
-        <!-- END CUSTOMIZING -->
-        <!-- =================================== -->
-    </div>
+        <!-- =================================== --><!-- END CUSTOMIZING --><!-- =================================== --></div>
 
-    <!-- SCRIPT TO FORCE OPEN IN EXTERNAL BROWSER -->
-    <script>
-        // This script finds all the links and adds a special click behavior
-        // to help them open in the phone's default browser.
+    <!-- SCRIPT TO FORCE OPEN IN EXTERNAL BROWSER (kept for functionality, though not effective in all Instagram cases) --><script>
         document.addEventListener('DOMContentLoaded', function() {
             const links = document.querySelectorAll('.link-button');
             links.forEach(link => {
                 link.addEventListener('click', function(event) {
-                    // Stop the link from opening normally inside Instagram
                     event.preventDefault();
-                    
-                    // Get the URL from the link
                     const url = this.getAttribute('href');
-                    
-                    // Use window.open, which is a stronger request to open a new tab
                     window.open(url, '_blank', 'noopener,noreferrer');
                 });
             });
@@ -150,4 +138,3 @@
 
 </body>
 </html>
-
