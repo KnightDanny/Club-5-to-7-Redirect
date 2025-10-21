@@ -105,12 +105,12 @@
         <!-- 4. Links -->
         <div class="links-container">
             <!-- Your Google Form Link -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrzCI-fNJtb2FbzU8jayJDXbP8aAMZtquf7hYBBm7Jx4ZWCg/viewform?usp=sharing&ouid=109399949878506138810" target="_blank" rel="noopener noreferrer" class="link-button">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrzCI-fNJtb2FbzU8jayJDXbP8aAMZtquf7hYBBm7Jx4ZWCg/viewform?usp=sharing&ouid=109399949878506138810" class="link-button">
                 📝 RSVP to the Costume Party
             </a>
 
             <!-- Telegram Group -->
-            <a href="https://t.me/club5to7" target="_blank" rel="noopener noreferrer" class="link-button">      
+            <a href="https://t.me/club5to7" class="link-button">
                 🌐 Join our Telegram Group
             </a>
 
@@ -126,5 +126,28 @@
         <!-- END CUSTOMIZING -->
         <!-- =================================== -->
     </div>
+
+    <!-- SCRIPT TO FORCE OPEN IN EXTERNAL BROWSER -->
+    <script>
+        // This script finds all the links and adds a special click behavior
+        // to help them open in the phone's default browser.
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.link-button');
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    // Stop the link from opening normally inside Instagram
+                    event.preventDefault();
+                    
+                    // Get the URL from the link
+                    const url = this.getAttribute('href');
+                    
+                    // Use window.open, which is a stronger request to open a new tab
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
+
