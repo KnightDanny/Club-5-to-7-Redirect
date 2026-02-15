@@ -4,10 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Links</title>
+    <title>Club 5 to 7 | Third Cinema</title>
+    <meta name="description" content="Club 5 to 7 presents Third Cinema: A Rooftop Hangout. RSVP now!">
+    <link rel="icon" type="image/jpeg" href="img/Logo.jpg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Club 5 to 7 | Third Cinema">
+    <meta property="og:description" content="Third Cinema: A Rooftop Hangout — Film screening, rooftop hangouts, trivia & more.">
+    <meta property="og:image" content="img/third_cinema/final.png">
+    <meta property="og:type" content="website">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* --- Base Styles --- */
@@ -15,12 +25,53 @@
             margin: 0;
             padding: 20px;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-color: #0a0a14;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #333;
+            color: #f0f0f0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- Film Grain Overlay --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.4;
+        }
+
+        /* --- Vignette --- */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* --- Fade-in Animation --- */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
@@ -29,116 +80,304 @@
             text-align: center;
             padding: 30px;
             box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        /* --- Film Strip Decoration --- */
+        .film-strip {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 28px;
+            opacity: 0.7;
+        }
+
+        .film-strip .frame {
+            width: 18px;
+            height: 14px;
+            background: #f0f0f0;
+            border-radius: 2px;
+        }
+
+        .film-strip .perf {
+            width: 6px;
+            height: 14px;
+            background: #f0f0f0;
+            border-radius: 1px;
+            opacity: 0.5;
         }
 
         /* --- Profile --- */
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(200, 16, 46, 0.15), 0 4px 20px rgba(0, 0, 0, 0.4);
             margin-bottom: 15px;
         }
 
         .profile-name {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
             margin: 0;
+            color: #ffffff;
+            letter-spacing: 4px;
         }
 
         .profile-description {
-            font-size: 1rem;
-            color: #555;
-            margin-top: 8px;
-            margin-bottom: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 4px;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 400;
+        }
+
+        /* --- Film Frame --- */
+        .film-frame {
+            display: inline-block;
+            background: #111;
+            padding: 0;
+            margin-bottom: 36px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow:
+                0 0 60px rgba(200, 16, 46, 0.08),
+                0 12px 40px rgba(0, 0, 0, 0.6);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .sprockets {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 12px;
+        }
+
+        .sprockets span {
+            width: 12px;
+            height: 8px;
+            background: #0a0a14;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .film-frame img {
+            width: 100%;
+            display: block;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        /* --- Scanlines on poster --- */
+        .film-frame::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.06) 2px,
+                rgba(0, 0, 0, 0.06) 4px
+            );
+            pointer-events: none;
+            border-radius: 2px;
         }
 
         /* --- Links --- */
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 14px;
         }
 
         .link-button {
-            background-color: #ffffff;
-            color: #333;
+            background-color: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             padding: 18px 25px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(4px);
         }
 
         .link-button i {
             margin-right: 10px;
-            font-size: 1.3em;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
         }
 
         .link-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Brand color hovers & active --- */
+        .link-button:hover .fa-star,
+        .link-button:active .fa-star {
+            color: #FFD700;
+        }
+
+        .link-button:hover .fa-tiktok,
+        .link-button:active .fa-tiktok {
+            color: #ffffff;
+        }
+
+        .link-button:hover .fa-instagram,
+        .link-button:active .fa-instagram {
+            color: #E1306C;
+        }
+
+        .link-button:hover .fa-telegram-plane,
+        .link-button:active .fa-telegram-plane {
+            color: #0088cc;
+        }
+
+        /* --- RSVP Featured Button --- */
+        .link-button.rsvp {
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: #c8102e;
+            color: #ffffff;
+            border: 1px solid #c8102e;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 20px 25px;
+            box-shadow: 0 0 30px rgba(200, 16, 46, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-button.rsvp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .link-button.rsvp:hover {
+            background-color: #a50d25;
+            border-color: #a50d25;
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(200, 16, 46, 0.35);
+        }
+
+        /* --- Divider --- */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            margin: 24px auto;
         }
 
         /* --- Footer --- */
         footer {
             margin-top: 40px;
-            font-size: 0.9rem;
-            color: #888;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <img src="Logo.jpg" alt="Profile Picture" class="profile-pic">
+
+        <!-- Film Strip Decoration -->
+        <div class="film-strip">
+            <span class="perf"></span>
+            <span class="frame"></span>
+            <span class="frame"></span>
+            <span class="frame"></span>
+            <span class="frame"></span>
+            <span class="frame"></span>
+            <span class="frame"></span>
+            <span class="frame"></span>
+            <span class="perf"></span>
+        </div>
+
+        <img src="img/Logo.jpg" alt="Profile Picture" class="profile-pic">
         <h1 class="profile-name">@Club5to7</h1>
-        <p class="profile-description">Welcome!</p>
+        <p class="profile-description">Presents</p>
+
+        <!-- Event Poster in Film Frame -->
+        <div class="film-frame">
+            <div class="sprockets">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <img src="img/third_cinema/final.png" alt="Third Cinema: A Rooftop Hangout">
+            <div class="sprockets">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
 
         <div class="links-container">
-            <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrzCI-fNJtb2FbzU8jayJDXbP8aAMZtquf7hYBBm7Jx4ZWCg/viewform?usp=sharing"
-                class="link-button">
-                🎃 RSVP to Costume Party
-            </a> -->
-            <a href="https://forms.gle/X3p2NXCvubeT4QDE7" class="link-button">
-                <i class="fas fa-candy-cane"></i> RSVP to our Holiday Special
+            <a href="https://forms.gle/RvNKnJGnJjUKJQjXA" class="link-button rsvp">
+                <i class="fas fa-ticket-alt"></i> RSVP to Third Cinema
+            </a>
+
+            <div class="divider"></div>
+
+            <a href="https://forms.gle/R7JmB7NVgkZVbF2M9" class="link-button">
+                <i class="fas fa-star"></i> Member Highlight
             </a>
             <a href="https://www.tiktok.com/@club5to7" class="link-button">
-                <i class="fab fa-tiktok"></i> Follow us on TikTok
+                <i class="fab fa-tiktok"></i> TikTok
             </a>
             <a href="https://www.instagram.com/club5to7" class="link-button">
-                <i class="fab fa-instagram"></i> Follow us on Instagram
+                <i class="fab fa-instagram"></i> Instagram
             </a>
             <a href="https://t.me/club5to7" class="link-button">
-                <i class="fab fa-telegram-plane"></i> Join Our Telegram Group
+                <i class="fab fa-telegram-plane"></i> Telegram
             </a>
-            
         </div>
 
         <footer>
-            <p>&copy; 2025 Club 5 to 7. All rights reserved.</p>
+            <p>&copy; 2026 Club 5 to 7</p>
         </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Select all buttons with the 'link-button' class
             const links = document.querySelectorAll('.link-button');
-
             links.forEach(link => {
                 link.addEventListener('click', function (event) {
-                    // 1. Prevent the browser from following the link normally
                     event.preventDefault();
-                    // 2. Get the destination URL from the link's 'href' attribute
                     const url = this.getAttribute('href');
-                    // 3. Manually tell the window to navigate to the new URL
                     window.location.href = url;
                 });
             });
