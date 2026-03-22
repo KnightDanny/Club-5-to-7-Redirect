@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club 5 to 7 | Third Cinema</title>
-    <meta name="description" content="Club 5 to 7 presents Third Cinema: A Rooftop Hangout. RSVP now!">
+    <title>Club 5 to 7 | Women in Cinema</title>
+    <meta name="description" content="Club 5 to 7 presents Women in Cinema: Club Meetup Vol. IX. RSVP now!">
     <link rel="icon" type="image/jpeg" href="img/Logo.jpg">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Club 5 to 7 | Third Cinema">
-    <meta property="og:description" content="Third Cinema: A Rooftop Hangout — Film screening, rooftop hangouts, trivia & more.">
-    <meta property="og:image" content="img/third_cinema/final.png">
+    <meta property="og:title" content="Club 5 to 7 | Women in Cinema">
+    <meta property="og:description" content="Women in Cinema: Club Meetup Vol. IX — Come talk about films by women. Free entrance.">
+    <meta property="og:image" content="img/women_in_cinema/Women in Cinema (1).png">
     <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +49,7 @@
             opacity: 0.4;
         }
 
-        /* --- Vignette --- */
+        /* --- Vignette with purple tint --- */
         body::after {
             content: '';
             position: fixed;
@@ -57,9 +57,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(10, 0, 20, 0.7) 100%);
             pointer-events: none;
             z-index: 999;
+        }
+
+        /* --- Ambient purple glow --- */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-glow.top-right {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            background: rgba(123, 47, 190, 0.12);
+        }
+
+        .ambient-glow.bottom-left {
+            width: 350px;
+            height: 350px;
+            bottom: -80px;
+            left: -80px;
+            background: rgba(155, 89, 182, 0.08);
         }
 
         /* --- Fade-in Animation --- */
@@ -115,8 +140,8 @@
             height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(200, 16, 46, 0.15), 0 4px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(155, 89, 182, 0.3);
+            box-shadow: 0 0 30px rgba(123, 47, 190, 0.2), 0 4px 20px rgba(0, 0, 0, 0.4);
             margin-bottom: 15px;
         }
 
@@ -132,12 +157,27 @@
         .profile-description {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(155, 89, 182, 0.6);
             margin-top: 4px;
-            margin-bottom: 28px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 6px;
             font-weight: 400;
+        }
+
+        /* --- Theme Badge --- */
+        .theme-badge {
+            display: inline-block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            padding: 6px 16px;
+            border: 1px solid rgba(155, 89, 182, 0.2);
+            border-radius: 20px;
+            background: rgba(123, 47, 190, 0.08);
         }
 
         /* --- Film Frame --- */
@@ -149,7 +189,7 @@
             max-width: 420px;
             width: 100%;
             box-shadow:
-                0 0 60px rgba(200, 16, 46, 0.08),
+                0 0 60px rgba(123, 47, 190, 0.1),
                 0 12px 40px rgba(0, 0, 0, 0.6);
             border-radius: 2px;
             position: relative;
@@ -226,8 +266,8 @@
 
         .link-button:hover {
             transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(123, 47, 190, 0.08);
+            border-color: rgba(155, 89, 182, 0.2);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
@@ -255,15 +295,15 @@
         /* --- RSVP Featured Button --- */
         .link-button.rsvp {
             font-family: 'Bebas Neue', sans-serif;
-            background-color: #c8102e;
+            background-color: #7B2FBE;
             color: #ffffff;
-            border: 1px solid #c8102e;
+            border: 1px solid #7B2FBE;
             font-size: 1.5rem;
             font-weight: 400;
             letter-spacing: 3px;
             text-transform: uppercase;
             padding: 20px 25px;
-            box-shadow: 0 0 30px rgba(200, 16, 46, 0.25);
+            box-shadow: 0 0 30px rgba(123, 47, 190, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -275,7 +315,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             animation: shimmer 3s infinite;
         }
 
@@ -285,17 +325,17 @@
         }
 
         .link-button.rsvp:hover {
-            background-color: #a50d25;
-            border-color: #a50d25;
+            background-color: #6A27A4;
+            border-color: #6A27A4;
             transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(200, 16, 46, 0.35);
+            box-shadow: 0 0 40px rgba(123, 47, 190, 0.4);
         }
 
         /* --- Divider --- */
         .divider {
             width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(155, 89, 182, 0.3), transparent);
             margin: 24px auto;
         }
 
@@ -311,6 +351,9 @@
 </head>
 
 <body>
+    <div class="ambient-glow top-right"></div>
+    <div class="ambient-glow bottom-left"></div>
+
     <div class="container">
 
         <!-- Film Strip Decoration -->
@@ -329,6 +372,7 @@
         <img src="img/Logo.jpg" alt="Profile Picture" class="profile-pic">
         <h1 class="profile-name">@Club5to7</h1>
         <p class="profile-description">Presents</p>
+        <div class="theme-badge">March's Theme: Women in Cinema</div>
 
         <!-- Event Poster in Film Frame -->
         <div class="film-frame">
@@ -337,7 +381,7 @@
                 <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
             </div>
-            <img src="img/third_cinema/final.png" alt="Third Cinema: A Rooftop Hangout">
+            <img src="img/women_in_cinema/photo_2026-03-22_13-56-23.jpg" alt="Women in Cinema: Club Meetup Vol. IX">
             <div class="sprockets">
                 <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
@@ -346,8 +390,8 @@
         </div>
 
         <div class="links-container">
-            <a href="https://forms.gle/RvNKnJGnJjUKJQjXA" class="link-button rsvp">
-                <i class="fas fa-ticket-alt"></i> RSVP to Third Cinema
+            <a href="https://forms.gle/nCZrs8TkMa9XRY98A" class="link-button rsvp">
+                <i class="fas fa-ticket-alt"></i> RSVP to Women in Cinema
             </a>
 
             <div class="divider"></div>
