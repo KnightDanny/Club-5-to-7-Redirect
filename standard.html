@@ -5,141 +5,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Club 5 to 7</title>
-    <meta name="description" content="Club 5 to 7 — Links and socials.">
+    <meta name="description" content="Club 5 to 7 — a film & culture club. Links and socials.">
     <link rel="icon" type="image/jpeg" href="img/Logo.jpg">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Club 5 to 7">
-    <meta property="og:description" content="Club 5 to 7 — Links and socials.">
+    <meta property="og:description" content="Club 5 to 7 — a film & culture club. Links and socials.">
     <meta property="og:image" content="img/Logo.jpg">
     <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
-        /* --- Base Styles --- */
+        :root {
+            --bg-1: #f5f7fa;
+            --bg-2: #dbe4ef;
+            --bg-3: #c3cfe2;
+            --ink: #2c3849;
+            --ink-soft: #64748b;
+            --card: #ffffff;
+            --edge: rgba(44, 56, 73, 0.08);
+            --accent: #5b7c99;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
             margin: 0;
-            padding: 20px;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 40px 18px;
             min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 680px;
-            width: 100%;
-            text-align: center;
-            padding: 30px;
-            box-sizing: border-box;
-        }
-
-        /* --- Profile --- */
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 15px;
-        }
-
-        .profile-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .profile-description {
-            font-size: 1rem;
-            color: #555;
-            margin-top: 8px;
-            margin-bottom: 30px;
-        }
-
-        /* --- Links --- */
-        .links-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(158deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
+            color: var(--ink);
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .link-button {
-            background-color: #ffffff;
-            color: #333;
-            text-decoration: none;
-            padding: 18px 25px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        /* soft light bloom + faint grain for depth */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background: radial-gradient(60% 45% at 50% 12%, rgba(255,255,255,0.85), transparent 70%);
+        }
+        body::after {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 424px;
+            text-align: center;
+        }
+
+        .reveal { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+        /* --- profile --- */
+        .avatar {
+            width: 108px; height: 108px;
+            border-radius: 50%;
+            object-fit: cover;
+            padding: 5px;
+            background: #fff;
+            border: 1px solid var(--edge);
+            box-shadow: 0 14px 30px rgba(44, 56, 73, 0.16), 0 2px 6px rgba(44,56,73,0.08);
+        }
+
+        .name {
+            font-family: 'Fraunces', Georgia, serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-size: clamp(2.1rem, 8vw, 2.7rem);
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            margin: 20px 0 0;
+        }
+
+        .handle {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 10px 0 0;
+        }
+
+        .tagline {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            margin: 12px 0 34px;
+        }
+
+        /* --- social links --- */
+        .links { display: flex; flex-direction: column; gap: 13px; }
+
+        .social {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--ink);
+            background: var(--card);
+            border: 1px solid var(--edge);
+            border-radius: 16px;
+            padding: 13px 18px;
+            box-shadow: 0 6px 18px rgba(44, 56, 73, 0.07);
+            transition: transform .22s cubic-bezier(0.22,1,0.36,1), box-shadow .25s ease, border-color .25s ease;
         }
 
-        .link-button i {
-            margin-right: 10px;
-            font-size: 1.3em;
+        .badge {
+            flex-shrink: 0;
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            background: #eef2f7;
+            color: var(--accent);
+            font-size: 1.15rem;
+            transition: background .25s ease, color .25s ease, transform .25s ease;
         }
 
-        .link-button:hover {
+        .social .label {
+            flex: 1;
+            text-align: left;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 1.06rem;
+            letter-spacing: 0.01em;
+        }
+        .social .label small {
+            display: block;
+            font-weight: 500;
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            letter-spacing: 0.02em;
+            margin-top: 1px;
+        }
+
+        .social .go {
+            color: #b8c2cf;
+            font-size: 0.85rem;
+            transition: transform .25s ease, color .25s ease;
+        }
+
+        .social:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 14px 30px rgba(44, 56, 73, 0.14);
+            border-color: rgba(91, 124, 153, 0.35);
         }
+        .social:hover .go { transform: translateX(4px); color: var(--accent); }
+        .social:hover .badge { transform: scale(1.05); }
 
-        /* --- Footer --- */
+        /* brand-color badges on hover */
+        .social.tiktok:hover .badge    { background: #111; color: #fff; }
+        .social.instagram:hover .badge { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #6228d7); color: #fff; }
+        .social.telegram:hover .badge  { background: #229ED9; color: #fff; }
+        .social.highlight:hover .badge { background: linear-gradient(135deg, #f6c23e, #e0a800); color: #fff; }
+
         footer {
             margin-top: 40px;
-            font-size: 0.9rem;
-            color: #888;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            color: #9aa7b5;
+        }
+
+        @media (max-width: 400px) {
+            .social { padding: 12px 15px; gap: 12px; }
+            .badge { width: 38px; height: 38px; }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <img src="img/Logo.jpg" alt="Profile Picture" class="profile-pic">
-        <h1 class="profile-name">@Club5to7</h1>
-        <p class="profile-description">Welcome!</p>
+    <div class="wrap">
+        <img src="img/Logo.jpg" alt="Club 5 to 7" class="avatar reveal" style="animation-delay:.05s">
+        <h1 class="name reveal" style="animation-delay:.13s">Club 5 to 7</h1>
+        <p class="handle reveal" style="animation-delay:.20s">@club5to7</p>
+        <p class="tagline reveal" style="animation-delay:.27s">Film nights, meetups &amp; good company.</p>
 
-        <div class="links-container">
-            <a href="https://www.tiktok.com/@club5to7" class="link-button">
-                <i class="fab fa-tiktok"></i> TikTok
+        <div class="links">
+            <a href="https://forms.gle/R7JmB7NVgkZVbF2M9" class="social highlight reveal" style="animation-delay:.34s">
+                <span class="badge"><i class="fa-solid fa-star"></i></span>
+                <span class="label">Member Highlight<small>Share how you see cinema</small></span>
+                <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
-            <a href="https://www.instagram.com/club5to7" class="link-button">
-                <i class="fab fa-instagram"></i> Instagram
+            <a href="https://www.tiktok.com/@club5to7" class="social tiktok reveal" style="animation-delay:.41s">
+                <span class="badge"><i class="fa-brands fa-tiktok"></i></span>
+                <span class="label">TikTok<small>@club5to7</small></span>
+                <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
-            <a href="https://t.me/club5to7" class="link-button">
-                <i class="fab fa-telegram-plane"></i> Telegram
+            <a href="https://www.instagram.com/club5to7" class="social instagram reveal" style="animation-delay:.48s">
+                <span class="badge"><i class="fa-brands fa-instagram"></i></span>
+                <span class="label">Instagram<small>@club5to7</small></span>
+                <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://t.me/club5to7" class="social telegram reveal" style="animation-delay:.55s">
+                <span class="badge"><i class="fa-brands fa-telegram"></i></span>
+                <span class="label">Telegram<small>t.me/club5to7</small></span>
+                <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
         </div>
 
-        <footer>
-            <p>&copy; 2026 Club 5 to 7. All rights reserved.</p>
-        </footer>
+        <footer class="reveal" style="animation-delay:.62s">&copy; 2026 Club 5 to 7</footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const links = document.querySelectorAll('.link-button');
-            links.forEach(link => {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const url = this.getAttribute('href');
-                    window.location.href = url;
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
