@@ -4,314 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club 5 to 7 | The Tortured Artist</title>
-    <meta name="description" content="Club 5 to 7 presents The Tortured Artist — June Meetup. Free entry. RSVP now!">
+    <title>Club 5 to 7</title>
+    <meta name="description" content="Club 5 to 7 — a film club based in Addis. Links, events and film picks now live at 5to7.club.">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://5to7.club/">
     <link rel="icon" type="image/jpeg" href="img/Logo.jpg">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Club 5 to 7 | The Tortured Artist">
-    <meta property="og:description" content="The Tortured Artist — Club 5 to 7's June Meetup. Films, games, music & good company. Free entry, Sat 27 June at The View.">
-    <meta property="og:image" content="img/tortured_artist/3913526237740649765.jpg">
+    <!-- Open Graph (for anyone still sharing this old link) -->
+    <meta property="og:title" content="Club 5 to 7">
+    <meta property="og:description" content="Club 5 to 7 — a film club based in Addis. Links, events and film picks at 5to7.club.">
+    <meta property="og:image" content="img/Logo.jpg">
+    <meta property="og:url" content="https://5to7.club/">
     <meta property="og:type" content="website">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!--
+      This page used to be the club's link-in-bio (themed per event: Third
+      Cinema, Women in Cinema, The Tortured Artist…). Since 2026-09-06 the
+      link-in-bio lives on the website itself at https://5to7.club/ — this
+      page only forwards there so old links in bios and posts keep working.
+    -->
+    <meta http-equiv="refresh" content="0; url=https://5to7.club/">
+    <script>
+        window.location.replace("https://5to7.club/");
+    </script>
 
     <style>
-        :root {
-            --wall: #6f7956;
-            --wall-deep: #5b6446;
-            --card: #f5efe1;
-            --cream: #fbf8f0;
-            --card2: #ece4d2;
-            --edge: #cabf9f;
-            --ink: #33392a;
-            --ink-soft: #6c7058;
-            --coral: #cf6a4f;
-            --coral-deep: #b9573d;
-            --olive: #5d6a42;
-            --gold: #b8924a;
-            --dark: #2f3526;
-        }
-
+        :root { --ink: #2c3849; --ink-soft: #64748b; --accent: #5b7c99; }
         * { box-sizing: border-box; }
-
         body {
             margin: 0;
-            padding: 36px 16px;
+            padding: 40px 18px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
-            background-color: var(--wall);
+            background: linear-gradient(158deg, #f5f7fa 0%, #dbe4ef 48%, #c3cfe2 100%);
             color: var(--ink);
-            font-family: 'EB Garamond', Georgia, serif;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* paper-grain atmosphere + vignette on the wall */
-        body::before {
-            content: '';
-            position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-        }
-        body::after {
-            content: '';
-            position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background: radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(38, 44, 26, 0.45) 100%);
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ---- The exhibition placard ---- */
-        .placard {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 470px;
-            background: var(--card);
-            border: 1px solid var(--edge);
-            box-shadow: 0 24px 60px rgba(30, 34, 18, 0.34), 0 2px 0 rgba(255,255,255,0.4) inset;
-            animation: fadeUp 0.7s ease-out both;
-        }
-
-        /* film-strip header / footer */
-        .strip {
-            background: var(--dark);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             text-align: center;
-            padding: 11px 0;
-            line-height: 0;
-            white-space: nowrap;
+            -webkit-font-smoothing: antialiased;
         }
-        .strip span {
-            display: inline-block;
-            width: 22px; height: 13px;
-            margin: 0 5px;
-            background: var(--card);
-            border-radius: 2px;
-            vertical-align: middle;
-        }
-
-        .inner { padding: 30px 34px 8px; text-align: center; }
-
-        .reveal { animation: fadeUp 0.7s ease-out both; }
-
-        /* crest / logo */
-        .crest {
-            width: 78px; height: 78px;
+        .avatar {
+            width: 96px; height: 96px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--gold);
-            padding: 4px;
-            background: var(--cream);
-            box-shadow: 0 6px 16px rgba(40, 44, 24, 0.2);
+            padding: 5px;
+            background: #fff;
+            box-shadow: 0 14px 30px rgba(44, 56, 73, 0.16);
         }
-
-        .kicker {
-            font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-            color: var(--olive);
-            font-size: 0.95rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin: 16px 0 2px;
-        }
-        .theme-eyebrow {
-            font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-            color: var(--gold);
-            font-size: 0.72rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin: 0;
-        }
-        .title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 700;
-            color: var(--coral);
-            font-size: clamp(2.5rem, 11vw, 3.5rem);
-            line-height: 1.02;
-            margin: 6px 0 8px;
-        }
-        .tagline {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-style: italic;
-            color: var(--ink-soft);
-            font-size: 1.02rem;
-            line-height: 1.5;
-            margin: 0 6px 24px;
-        }
-
-        /* framed poster */
-        .frame {
+        h1 { font-size: 1.8rem; margin: 20px 0 6px; letter-spacing: -0.01em; }
+        p { margin: 0; color: var(--ink-soft); font-size: 1.02rem; }
+        a.go {
             display: inline-block;
-            background: var(--cream);
-            border: 1px solid var(--gold);
-            padding: 8px;
-            max-width: 78%;
-            box-shadow: 0 14px 30px rgba(30, 34, 18, 0.28);
-        }
-        .frame img { display: block; width: 100%; height: auto; }
-
-        /* the placard caption rule */
-        .rule {
-            display: flex; align-items: center; justify-content: center;
-            gap: 12px; margin: 26px 4px 4px;
-        }
-        .rule::before, .rule::after {
-            content: ''; height: 1px; width: 54px; background: var(--edge);
-        }
-        .rule span {
-            font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-            color: var(--gold); font-size: 0.82rem; letter-spacing: 3px;
-        }
-
-        .meta {
-            font-family: 'EB Garamond', Georgia, serif;
-            color: var(--ink); font-size: 1.04rem; line-height: 1.7;
-            margin: 14px 6px 26px;
-        }
-        .meta b { font-weight: 600; }
-        .meta .free { color: var(--coral); font-style: italic; }
-
-        /* ---- buttons ---- */
-        .links { padding: 0 26px 8px; }
-
-        .btn {
-            display: flex; align-items: center; justify-content: center;
-            gap: 11px;
-            text-decoration: none;
-            font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-            letter-spacing: 2px; text-transform: uppercase;
-            transition: transform .2s ease, background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
-        }
-
-        .btn.rsvp {
-            background: var(--olive);
-            color: var(--cream);
-            font-size: 1.5rem;
-            letter-spacing: 3px;
-            padding: 18px 22px;
-            margin-bottom: 18px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 22px rgba(40, 48, 22, 0.32);
-        }
-        .btn.rsvp::after {
-            content: '';
-            position: absolute; top: 0; left: -120%;
-            width: 60%; height: 100%;
-            background: linear-gradient(100deg, transparent, rgba(255,255,255,0.22), transparent);
-            transform: skewX(-18deg);
-            animation: sheen 4.5s ease-in-out infinite;
-        }
-        @keyframes sheen { 0%,18% { left: -120%; } 42%,100% { left: 140%; } }
-        .btn.rsvp:hover { background: #51603a; transform: translateY(-2px); box-shadow: 0 14px 28px rgba(40, 48, 22, 0.4); }
-        .btn.rsvp i { font-size: 1.05rem; }
-
-        .btn.link {
-            background: var(--cream);
+            margin-top: 22px;
+            padding: 13px 22px;
+            border-radius: 14px;
+            background: #fff;
             color: var(--ink);
-            border: 1px solid var(--edge);
-            font-size: 1.06rem;
-            padding: 15px 22px;
-            margin-bottom: 11px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(44, 56, 73, 0.1);
         }
-        .btn.link i { font-size: 1.15em; color: var(--olive); transition: color .25s ease; width: 20px; }
-        .btn.link:hover {
-            transform: translateY(-2px);
-            border-color: var(--coral);
-            background: #fffdf7;
-            box-shadow: 0 9px 20px rgba(30, 34, 18, 0.18);
-        }
-        .btn.link:hover i { color: var(--coral); }
-
-        footer {
-            text-align: center;
-            background: var(--dark);
-            padding: 16px;
-            margin-top: 18px;
-        }
-        footer span {
-            font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-            color: var(--edge); font-size: 0.82rem; letter-spacing: 4px; text-transform: uppercase;
-        }
-
-        .copyright {
-            position: relative; z-index: 1;
-            text-align: center; margin-top: 16px;
-            font-family: 'EB Garamond', serif; font-size: 0.8rem;
-            color: rgba(245, 239, 225, 0.62); letter-spacing: 1px;
-        }
-
-        /* staggered reveals */
-        .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; }
-        .d3 { animation-delay: .24s; } .d4 { animation-delay: .32s; }
-        .d5 { animation-delay: .40s; } .d6 { animation-delay: .48s; }
-        .d7 { animation-delay: .56s; } .d8 { animation-delay: .64s; }
-
-        @media (max-width: 420px) {
-            .inner { padding: 24px 22px 6px; }
-            .links { padding: 0 18px 6px; }
-            .frame { max-width: 86%; }
-        }
+        a.go:hover { color: var(--accent); }
     </style>
 </head>
 
 <body>
-    <div class="placard">
-
-        <!-- film strip -->
-        <div class="strip"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-
-        <div class="inner">
-            <img src="img/Logo.jpg" alt="Club 5 to 7" class="crest reveal d1">
-
-            <p class="kicker reveal d1">Club 5 to 7 Presents</p>
-            <p class="theme-eyebrow reveal d2">June's Theme</p>
-            <h1 class="title reveal d2">The Tortured Artist</h1>
-            <p class="tagline reveal d3">Obsession, brilliance, and the beautiful wreckage of making art.</p>
-
-            <div class="frame reveal d4">
-                <img src="img/tortured_artist/3913526237740649765.jpg" alt="The Tortured Artist — Club 5 to 7 June Meetup">
-            </div>
-
-            <div class="rule reveal d5"><span>The Meetup</span></div>
-            <p class="meta reveal d5">
-                <b>Saturday, 27 June</b> &middot; 9:00 LT<br>
-                The View — 4 Kilo, next to Berges Clinic<br>
-                <span class="free">Free entry — just bring yourself.</span>
-            </p>
-        </div>
-
-        <div class="links">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPoIVfC8arTzXjh9HYMTSB2YMPMLdJpYmh9-KYlXraP26k7w/viewform" class="btn rsvp reveal d5">
-                <i class="fa-solid fa-ticket"></i> RSVP to the Meetup
-            </a>
-            <a href="https://forms.gle/R7JmB7NVgkZVbF2M9" class="btn link reveal d6">
-                <i class="fa-solid fa-star"></i> Member Highlight
-            </a>
-            <a href="https://www.tiktok.com/@club5to7" class="btn link reveal d7">
-                <i class="fa-brands fa-tiktok"></i> TikTok
-            </a>
-            <a href="https://www.instagram.com/club5to7" class="btn link reveal d7">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            <a href="https://t.me/club5to7" class="btn link reveal d8">
-                <i class="fa-brands fa-telegram"></i> Telegram
-            </a>
-        </div>
-
-        <footer><span>Club 5 to 7 &middot; @club5to7</span></footer>
-    </div>
-
-    <p class="copyright reveal d8">&copy; 2026 Club 5 to 7</p>
+    <img src="img/Logo.jpg" alt="Club 5 to 7" class="avatar">
+    <h1>Club 5 to 7</h1>
+    <p>We've moved. Taking you to 5to7.club&hellip;</p>
+    <a class="go" href="https://5to7.club/">Continue to 5to7.club &rarr;</a>
 </body>
 
 </html>
